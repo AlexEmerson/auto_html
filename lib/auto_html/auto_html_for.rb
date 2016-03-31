@@ -15,14 +15,16 @@ module AutoHtmlFor
   end
 
   module ClassMethods
-    def auto_html_for(raw_attrs, &proc)
+    def auto_html_for(raw_attrs, options, &proc)
       include AutoHtmlFor::InstanceMethods
 
       if defined?(ActiveRecord) == "constant"
         return unless ActiveRecord::Base.connection.table_exists? self.table_name
       end
 
-      suffix =  AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]
+      options = AutoHtmlFor.auto_html_for_options.merge(options)
+
+      suffix = option[:htmlized_attribute_suffix]
       auto_html_for_columns = [raw_attrs].flatten.map { |a| "#{a}#{suffix}" }
       
       # Needed for Mongoid
