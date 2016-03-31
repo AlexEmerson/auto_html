@@ -15,7 +15,7 @@ module AutoHtmlFor
   end
 
   module ClassMethods
-    def auto_html_for(raw_attrs, options, &proc)
+    def auto_html_for(raw_attrs, options={}, &proc)
       include AutoHtmlFor::InstanceMethods
 
       if defined?(ActiveRecord) == "constant"
