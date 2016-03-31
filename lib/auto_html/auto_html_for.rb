@@ -24,7 +24,7 @@ module AutoHtmlFor
 
       options = AutoHtmlFor.auto_html_for_options.merge(options)
 
-      suffix = option[:htmlized_attribute_suffix]
+      suffix = options[:htmlized_attribute_suffix]
       auto_html_for_columns = [raw_attrs].flatten.map { |a| "#{a}#{suffix}" }
       
       # Needed for Mongoid
