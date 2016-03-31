@@ -15,6 +15,7 @@ module AutoHtmlFor
   end
 
   module ClassMethods
+    #beware: local custom suffix via options works only for already auto_html'ed attribute, otherwise use global (class scoped) settings to prevent errors
     def auto_html_for(raw_attrs, options={}, &proc)
       include AutoHtmlFor::InstanceMethods
 
